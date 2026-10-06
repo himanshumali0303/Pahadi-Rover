@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Mirrors the Logo mark, using the same brand tokens. -->
+  <rect width="64" height="64" rx="14" fill="#2f6b4f"/>
+  <circle cx="42" cy="20" r="6" fill="#f4b942" opacity="0.95"/>
+  <path d="M8 50 L24 28 L34 42 L40 34 L56 50 Z" fill="#f8fafc"/>
+  <path d="M34 42 L29 36 L34 31 L39 36 Z" fill="#f4b942"/>
+  <path d="M8 50 h48 v6 a2 2 0 0 1 -2 2 H10 a2 2 0 0 1 -2 -2 Z" fill="#111827"/>
+</svg>

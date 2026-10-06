@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Pahadi Rover design tokens
+
+   Every component reads from these tokens — no hardcoded brand hex values.
+   Source of truth for the palette and the four category mappings.
+   ========================================================================== */
+
+@theme {
+  /* --- Brand: primary --- */
+  --color-ink: #111827; /* Deep Black   — navbar, footer, dark sections, primary CTA */
+  --color-ink-soft: #17201b; /* hover state for Deep Black */
+
+  /* --- Brand: category primaries --- */
+  --color-pahadi: #2f6b4f; /* Forest Green      — Pahadi + Stay */
+  --color-pahadi-deep: #245440; /* hover / deep surfaces */
+  --color-cafe: #f4b942; /* Himalayan Yellow  — Cafe + accents */
+  --color-cafe-deep: #d99f2b; /* hover for Himalayan Yellow */
+  --color-travel: #2563eb; /* Mountain Blue     — Travel */
+  --color-travel-deep: #1d4fd7; /* hover for Mountain Blue */
+
+  /* --- Neutrals --- */
+  --color-snow: #f8fafc; /* Snow White       — page background */
+  --color-mist: #f1f5f3; /* Mist Background  — alternate sections */
+  --color-text: #17201b; /* Dark Text        — body copy on light */
+  --color-muted: #64748b; /* Muted Text       — secondary copy */
+  --color-line: #e2e8f0; /* subtle neutral border for cards */
+  --color-line-strong: #cbd5e1; /* stronger border, inputs */
+
+  /* --- Semantic aliases (kept so components read in intent, not hue) --- */
+  --color-surface: #ffffff; /* card background */
+  --color-ink-inverse: #f8fafc; /* text on Deep Black */
+
+  /* --- Typography --- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+
+  /* --- Spec-name aliases ---
+     The brief named these tokens primary/green/blue/yellow/background/
+     muted-background/text/muted-text. They are aliased here (never authored
+     twice) so code written against either naming reads the same value. */
+  --color-primary: #111827; /* = --color-ink */
+  --color-primary-hover: #17201b;
+  --color-green: #2f6b4f; /* = --color-pahadi */
+  --color-blue: #2563eb; /* = --color-travel */
+  --color-yellow: #f4b942; /* = --color-cafe */
+  --color-background: #f8fafc; /* = --color-snow */
+  --color-muted-background: #f1f5f3; /* = --color-mist */
+  --color-muted-text: #64748b; /* = --color-muted */
+  --color-dark: #17201b; /* = --color-text */
+}
+
+/* Tailwind v4 maps --font-display to the `font-display` utility. Headings use
+   it; body copy stays on font-sans (Inter). Both are sans-serif per spec. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-snow text-text font-sans antialiased;
+}
+
+/* Headings are Plus Jakarta Sans by default. This lives in the base layer so a
+   component can still opt an individual heading back to the body font with a
+   `font-sans` utility. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+}
+
+::selection {
+  background: var(--color-pahadi);
+  color: var(--color-snow);
+}
+
+@media (min-width: 1024px) {
+  ::selection {
+    background: var(--color-ink);
+  }
+}
+
+/* Editorial images: a subtle inner hairline keeps photography from bleeding
+   into the card border on light backgrounds. */
+@utility ring-hairline {
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
